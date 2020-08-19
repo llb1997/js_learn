@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1.邮箱是否合法
+        function checkEmail(str) {
+            var re = /^([a-zA-Z0-9]+[-_\.]?)+@[a-zA-Z0-9]+\.[a-z]+$/;            
+            if (re.test(str)) {
+                console.log("邮箱地址合法");
+            } else {
+                console.log("邮箱地址不合法");
+            }
+        }
+        checkEmail('1223901216@qq.com');
+        checkEmail('122390121qq.com');
+        //2.电话号码是否合法
+        function checkPhone(str) {
+            var re1=/^\d{3}-\d{8}|\d{4}-\d{7,8}$/;
+            if (re1.test(str)) {
+                console.log("电话号码合法");
+            } else {
+                console.log("电话号码不合法");
+            }
+        }
+        checkPhone('0341-8958305');
+        checkPhone('031-8958305');
+        checkPhone('029-62376605');
+        //3.密码是否大于八位
+        function checkPw(str) {
+            
+            if (str.length>8) {
+                console.log("密码大于8位");
+            } else {
+                console.log("密码小于8位");
+            }
+        }
+        checkPw('xsd123455');
+        checkPw('xsd1');
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
