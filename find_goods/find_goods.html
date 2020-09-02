@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .search {
+            margin: 10px auto;
+            width: 600px;
+            background-color: #fff;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .search input {
+            width: 40px;
+        }
+
+        table {
+            border: 1px solid black;
+        }
+
+        .list {
+            width: 300px;
+
+            margin: 10px auto;
+            text-align: center;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        按照价格查询: <input type="text" class="start"> - <input type="text" class="end">
+        <button class=" search_price">搜索</button>
+
+        按照商品名称查询: <input type="text" class=" product">
+        <button class="search_pro">查询</button>
+
+    </div>
+    <div class="list">
+        <table border="1" cellspacing='0' width="300px" height="200px">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>产品名称</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // 利用新增数组方法操作数据
+        var data = [{
+            id: 1,
+            pname: '小米',
+            price: 3999
+        }, {
+            id: 2,
+            pname: ' oppo',
+            price: 999
+        }, {
+            id: 3,
+            pname: '荣耀',
+            price: 1299
+        }, {
+            id: 4,
+            pname: '华为',
+            price: 1999
+        },];
+        //  querySelector() 方法仅仅返回匹配指定选择器的第一个元素。如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。
+        var tbody = document.querySelector('tbody');
+        var search_price = document.querySelector('.search_price');
+        var start = document.querySelector('.start');
+        var end = document.querySelector('.end');
+        var product = document.querySelector('.product') ;
+        var search_pro = document.querySelector('.search_pro')
+        // 2.把数据渲染到页面中
+
+        setDate(data);
+        function setDate(mydata) {
+            // 清空原来tbody里面的数据
+            tbody.innerHTML = '';
+            mydata.forEach(function (value) {
+                // createElement() 方法通过指定名称创建一个元素
+                var tr = document.createElement('tr');
+                // innerHTML 属性设置或返回表格行的开始和结束标签之间的 HTML。
+                tr.innerHTML = '<td>' + value.id + '</td><td>' + value.pname + '</td><td>' + value.price + '</td>';
+                // appendChild() 方法可向节点的子节点列表的末尾添加新的子节点。
+                tbody.appendChild(tr);
+            })
+        }
+
+        // 3.根据价格查询商品
+        // 当我们点击了按钮，就可以根据我们的商品价格去删选数组里面的对象
+        search_price.addEventListener('click', function () {
+            var newDate = data.filter(function (value) {
+                return value.price >= start.value && value.price <= end.value;
+            });
+            console.log(newDate);
+            // 把筛选完之后的对象渲染到页面中
+            setDate(newDate);
+        })
+        // 4.根据商品名称查找商品
+        //如果查询数组中唯一的元素，用some方法更合适，因为它找到这个元素,就不再进行循环，效率更高
+
+        search_pro.addEventListener('click', function () {
+            arr = [];
+            data.some(function (value) {
+                if(value.pname == product.value){
+                    arr.push(value);
+
+                    return true;//return 后面必须写true，说明找到了，不再进行循环
+                }
+            });
+            console.log(arr);
+            // 把筛选完之后的对象渲染到页面中
+            setDate(arr);
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

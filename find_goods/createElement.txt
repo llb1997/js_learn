@@ -1,0 +1,13 @@
+createElement() 方法通过指定名称创建一个元素
+
+创建一个按钮:
+var btn=document.createElement("BUTTON");
+
+HTML元素经常包含文本。创建指定文本的按钮你需要在按钮元素后添加文本节点:
+
+创建指定文本的按钮：
+var btn=document.createElement("BUTTON");
+var t=document.createTextNode("CLICK ME");
+btn.appendChild(t); 
+
+一个CLICK ME的按钮

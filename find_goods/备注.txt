@@ -1,0 +1,15 @@
+appendChild() 方法可向节点的子节点列表的末尾添加新的子节点。
+
+document.addEventListener(event, function, useCapture) 
+event
+必需。描述事件名称的字符串。
+
+function
+必需。描述了事件触发后执行的函数。 
+
+useCapture
+可选。布尔值，指定事件是否 在捕获或冒泡阶段执行。
+
+可能值： 
+true - 事件句柄在捕获阶段执行
+false- 默认。事件句柄在冒泡阶段执行
