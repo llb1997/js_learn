@@ -5,22 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+</head>
+
+<body>
+    <input type="number" placeholder="请您输入年份:">
     <script>
         //用户输入年份，输出当前年份2月份的天数
+       
 
-        function backDay() {
 
-            var year = prompt('请您输入年份:');
+        function backDay(year) {
 
-            if (isRunYear(year)) { //调用函数需要加小括号
+            // var year = prompt('请您输入年份:');
+         if (isRunYear(year)) { //调用函数需要加小括号
                 alert('当前年份是闰年2月份有29天');
             } else {
                 alert('当前年份是平年2月份有28天');
             }
 
         }
+        var input = document.querySelector("input");
+        input.addEventListener("blur", function () {
+            backDay(input.value);
+            
+        }
+        )
 
-        backDay();
+        // backDay(input.value);
 
         //判断是否为闰年的函数
 
@@ -36,10 +48,6 @@
             return flag;
         }
     </script>
-</head>
-
-<body>
-
 </body>
 
 </html>
