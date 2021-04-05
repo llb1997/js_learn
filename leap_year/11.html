@@ -9,26 +9,55 @@
 </head>
 
 <body>
-    <input type="number" placeholder="请您输入年份:">
+    <input type="text" placeholder="请您输入年份:">
     <script>
         //用户输入年份，输出当前年份2月份的天数
-       
+
 
 
         function backDay(year) {
 
-            // var year = prompt('请您输入年份:');
-         if (isRunYear(year)) { //调用函数需要加小括号
-                alert('当前年份是闰年2月份有29天');
+            var re = / ^[0-9]*$/;
+            alert(year);
+            alert(re.test(year));
+
+            if (re.test(year)) {
+                alert("合法");
+
+                
             } else {
-                alert('当前年份是平年2月份有28天');
+                alert("不合法");
+
             }
+
+            // var year = prompt('请您输入年份:');
+            if (isRunYear(year)) { //调用函数需要加小括号
+                    alert('当前年份是闰年2月份有29天');
+                } else {
+                    alert('当前年份是平年2月份有28天');
+                }
 
         }
         var input = document.querySelector("input");
         input.addEventListener("blur", function () {
-            backDay(input.value);
-            
+           console.log (typeof input.value);
+           
+           console.log (typeof parseInt(input.value));
+        //    var year=parseInt(input.value)
+           var re = / ^[0-9]*$/;
+            alert(year);
+            alert(re.test(year));
+
+            if (re.test(year)) {
+                alert("合法");
+
+                
+            } else {
+                alert("不合法");
+
+            }
+            // backDay(parseInt(input.value));
+
         }
         )
 
